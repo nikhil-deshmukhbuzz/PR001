@@ -1,0 +1,52 @@
+﻿<div class="modal fade" id="mediumModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Spare</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="form" novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="card">
+                            <div class="card-header"><strong>{{header}}</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Spare Name</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-gears"></i></div>
+                                                <input class="form-control" name="spareName" maxlength="20" ng-model="oSpare.SpareName" ng-class="{ 'has-error' : form.spareName.$invalid && !form.spareName.$pristine }" autocomplete="off" required>
+                                            </div>
+                                            <small ng-show="form.spareName.$invalid && !form.spareName.$pristine" class="error">Spare name is required.</small>
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Available Stock</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-shopping-cart"></i></div>
+                                                <input class="form-control" name="stock" ng-model="oSpare.Stock" only-digits maxlength="3" ng-class="{ 'has-error' : form.stock.$invalid && !form.stock.$pristine }" autocomplete="off" required>
+                                            </div>
+                                            <small ng-show="form.stock.$invalid && !form.stock.$pristine" class="error">Stock is required.</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="reset(form)">Cancel</button>
+                    <button id="delete" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="delete(form)" ng-show="isDelete">Delete</button>
+                    <button type="submit" ng-click="submit(form)" ng-disabled="form.spareName.$invalid || form.stock.$invalid" class="btn btn-primary" data-dismiss="modal">{{submitTxt}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

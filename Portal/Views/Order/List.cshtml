@@ -1,0 +1,55 @@
+﻿<div class="content mt-3">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="page-title float-left">
+                            <h1>Order</h1>
+                        </div>
+                        <button type="button" style="min-width:100px" class="btn btn-primary float-right" data-toggle="modal" data-target="#mediumModal" ng-click="add()" ng-show="isAdmin">ADD</button>
+                    </div>
+                    <div class="card-body table-scroll" ng-init="initialize()">
+                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Order Number</th>
+                                    <th>Client Name</th>
+                                    <th>Product Name</th>
+                                    <th>Hardware(Q)</th>
+                                    <th>Deadline</th>
+                                    <th>Status</th>
+                                    <th ng-show="isAdmin"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in data">
+                                    <td>{{item.OrderNumber}}</td>
+                                    <td>{{item.ClientMaster.ClientName}}</td>
+                                    <td>{{item.ProductMaster.ProductName}}</td>
+                                    <td>{{item.HardwareQauntity}}</td>
+                                    <td>{{item.DeadlineDate |date:'dd-MM-yyyy'}}</td>
+                                    <td data-toggle="modal" data-target="#mediumModalStatus" class="pointer" ng-click="orderStatus(item.OrderID)">
+                                        <span class="badge badge-dark" ng-if="item.OrderStatus.Status == 'Pending'"> {{item.OrderStatus.Status}} </span>
+                                        <span class="badge badge-primary" ng-if="item.OrderStatus.Status == 'Device Ready'"> {{item.OrderStatus.Status}} </span>
+                                        <span class="badge badge-secondary" ng-if="item.OrderStatus.Status == 'Billing'"> {{item.OrderStatus.Status}} </span>
+                                        <span class="badge badge-warning" ng-if="item.OrderStatus.Status == 'Delivered'"> {{item.OrderStatus.Status}} </span>
+                                        <span class="badge badge-success" ng-if="item.OrderStatus.Status == 'Payment'"> {{item.OrderStatus.Status}} </span>
+                                        <span class="badge badge-danger" ng-if="item.OrderStatus.Status == 'Cancel'"> {{item.OrderStatus.Status}} </span>
+                                        <span class="badge badge-dark" ng-if="item.OrderStatus.Status == 'OTHER'"> {{item.OrderStatus.Status}} </span>
+                                    </td>
+                                    <td ng-show="isAdmin">
+                                        <span class="icon-container pointer" data-toggle="modal" data-target="#mediumModal" ng-click="edit(item.OrderID)">
+                                            <span class="ti-pencil-alt"></span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- .animated -->
+</div>

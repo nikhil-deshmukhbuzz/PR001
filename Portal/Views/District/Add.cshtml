@@ -1,0 +1,46 @@
+﻿<div class="modal fade" id="mediumModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">District</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="form" novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="card">
+                            <div class="card-header"><strong>{{header}}</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">District Name<span class="error">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-pencil-square"></i></div>
+                                                <input class="form-control" name="districtName" maxlength="20" ng-model="oDistrict.DistrictName" ng-class="{ 'has-error' : form.districtName.$invalid && !form.districtName.$pristine }" tabindex="1" autocomplete="off" required>
+                                            </div>
+                                            <small ng-show="form.districtName.$invalid && !form.districtName.$pristine" class="error">District name is required.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="state" class=" form-control-label">State<span class="error">*</span></label>
+                                            <select id="state" name="state" data-placeholder="Choose a State..." class="standardSelect form-control" tabindex="2" ng-class="{'has-error': form.state.$error.required}" ng-model="ddl.selectedState"  ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="reset(form)">Cancel</button>
+                    <button type="submit" ng-click="submit(form)" ng-disabled="form.districtName.$invalid || form.state.$pristine" class="btn btn-primary" data-dismiss="modal">{{submitTxt}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

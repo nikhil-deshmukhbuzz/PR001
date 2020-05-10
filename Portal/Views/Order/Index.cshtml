@@ -1,0 +1,18 @@
+﻿<div id="template" style="visibility:hidden;" ng-controller="orderCTRL" ng-init="masters()">
+    <div class="col-sm-12" ng-show="success">
+        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+            <span class="badge badge-pill badge-success"><i class="fa fa-info"></i> </span> {{successMsg}}.
+        </div>
+    </div>
+    <div class="col-sm-12" ng-show="error">
+        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+            <span class="badge badge-pill badge-danger"><i class="fa fa-info"></i> </span> {{errorMsg}}.
+        </div>
+    </div>
+    <!-- Add -->
+    <partial name="~/Views/Order/Add.cshtml" />
+    <!-- List -->
+    <partial name="~/Views/Order/List.cshtml" />
+    <!-- Add -->
+    <partial name="~/Views/Order/Status.cshtml" />
+</div>

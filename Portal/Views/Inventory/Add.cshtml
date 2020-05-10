@@ -1,0 +1,65 @@
+﻿<div class="modal fade" id="mediumModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Inventory</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="form" novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="card">
+                            <div class="card-header"><strong>{{header}}</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Reference Number<span class="error">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-barcode"></i></div>
+                                                <input class="form-control" name="refNumber" maxlength="20" ng-model="oInventory.ReferenceNumber" ng-class="{ 'has-error' : form.refNumber.$invalid && !form.refNumber.$pristine }" tabindex="1" autocomplete="off" required>
+                                            </div>
+                                            <small ng-show="form.refNumber.$invalid && !form.refNumber.$pristine" class="error">Reference number is required.</small>
+
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="product" class=" form-control-label">Hardware<span class="error">*</span></label>
+                                            <select id="hardware" name="hardware" data-placeholder="Choose a Hardware..." class="standardSelect form-control" tabindex="2" ng-class="{'has-error': form.hardware.$error.required}" ng-model="ddl.selectedHardware" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="devicespare" class=" form-control-label">Device or Spare<span class="error">*</span></label>
+                                            <select id="devicespare" name="devicespare" data-placeholder="Choose a Device or Spare..." class="standardSelect form-control" tabindex="3" ng-class="{'has-error': form.device.$error.required}" ng-model="ddl.selectedDevice" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Warranty Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input type="date" class="form-control" name="date" ng-model="oInventory.WarrantyDate" autocomplete="off" tabindex="4">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="reset(form)">Cancel</button>
+                    <button id="delete" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="delete(form)" ng-show="isDelete">Delete</button>
+                    <button type="submit" ng-click="submit(form)" ng-disabled="form.refNumber.$invalid ||form.hardware.$pristine || form.devicespare.$pristine" class="btn btn-primary" data-dismiss="modal">{{submitTxt}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

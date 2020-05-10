@@ -1,0 +1,127 @@
+﻿<div class="content mt-3" ng-show="isStockRegister" style="max-height:500px;overflow-y:auto">
+
+    <div class="col-sm-12 mb-4">
+        <div class="card-group">
+            <div class="card col-md-6 no-padding ">
+                <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <div class="h4 mb-0">{{("00000"+stockRegister.PendingOrderCount).slice(-3)}}</div>
+                    <small class="text-muted text-uppercase font-weight-bold">Pending Orders</small>
+                    <div class="progress progress-xs mt-3 mb-0 bg-flat-color-5" style="width: 40%; height: 5px;"></div>
+                </div>
+            </div>
+            <div class="card col-md-6 no-padding ">
+                <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <div class="h4 mb-0">
+                        <span>{{("00000"+stockRegister.PendingDispatchCount).slice(-3)}}</span>
+                    </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Pending Dispatch</small>
+                    <div class="progress progress-xs mt-3 mb-0 bg-flat-color-1" style="width: 40%; height: 5px;"></div>
+                </div>
+            </div>
+            <div class="card col-md-6 no-padding ">
+                <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-cart-plus"></i>
+                    </div>
+                    <div class="h4 mb-0">
+                        <span>{{("00000"+stockRegister.AvailabaleInventory).slice(-3)}}</span>
+                    </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Available Inventory</small>
+                    <div class="progress progress-xs mt-3 mb-0 bg-flat-color-2" style="width: 40%; height: 5px;"></div>
+                </div>
+            </div>
+            <div class="card col-md-6 no-padding ">
+                <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-cart-plus"></i>
+                    </div>
+                    <div class="h4 mb-0">
+                        <span>{{("00000"+stockRegister.AvailabaleDevices).slice(-3)}}</span>
+                    </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Available Devices</small>
+                    <div class="progress progress-xs mt-3 mb-0 bg-flat-color-3" style="width: 40%; height: 5px;"></div>
+                </div>
+            </div>
+            <div class="card col-md-6 no-padding ">
+                <div class="card-body">
+                    <div class="h1 text-muted text-right mb-4">
+                        <i class="fa fa-cart-plus"></i>
+                    </div>
+                    <div class="h4 mb-0">
+                        <span>{{("00000"+stockRegister.AvailabaleSpares).slice(-3)}}</span>
+                    </div>
+                    <small class="text-muted text-uppercase font-weight-bold">Available Spares</small>
+                    <div class="progress progress-xs mt-3 mb-0 bg-flat-color-4" style="width: 40%; height: 5px;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!--/.col-->
+    <div class="col-xl-9 col-lg-6">
+        <div class="card">
+            <div class="card-header">
+                <strong class="card-title">Pending Orders</strong>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Order No</th>
+                            <th scope="col">Client</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Hardware (Q)</th>
+                            <th scope="col">Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in stockRegister.PendingOrders">
+                            <th scope="row">{{$index + 1}}</th>
+                            <td><small>{{item.OrderNumber}}</small></td>
+                            <td><small>{{item.ClientMaster.ClientName}}</small></td>
+                            <td><small>{{item.ProductMaster.ProductName}}</small></td>
+                            <td><small>{{item.HardwareQauntity}}</small></td>
+                            <td><small>{{item.Comment}}</small></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+    <div class="col-xl-3 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-money text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Profit</div>
+                        <div class="stat-digit">1,012</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-truck text-primary border-primary"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Dispatched</div>
+                        <div class="stat-digit">{{stockRegister.TotalDispatchCount}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div> <!-- .content -->

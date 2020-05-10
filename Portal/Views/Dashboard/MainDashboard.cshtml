@@ -1,0 +1,256 @@
+﻿<div class="content mt-3" ng-show="isMainDashboard" style="max-height:550px;overflow-y:auto">
+    <div class="content mt-3">
+
+        <div class="col-sm-12 mb-4">
+            <div class="card-group">
+                <div class="card col-md-6 no-padding ">
+                    <div class="card-body">
+                        <div class="h1 text-muted text-right mb-4">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <div class="h4 mb-0">
+                            <span>{{("00000"+main.DistributorCount).slice(-3)}}</span>
+                        </div>
+                        <small class="text-muted text-uppercase font-weight-bold">Distributors</small>
+                        <div class="progress progress-xs mt-3 mb-0 bg-flat-color-1" style="width: 40%; height: 5px;"></div>
+                    </div>
+                </div>
+                <div class="card col-md-6 no-padding ">
+                    <div class="card-body">
+                        <div class="h1 text-muted text-right mb-4">
+                            <i class="fa fa-user-plus"></i>
+                        </div>
+                        <div class="h4 mb-0">
+                            <span>{{("00000"+main.ClientCount).slice(-3)}}</span>
+                        </div>
+                        <small class="text-muted text-uppercase font-weight-bold">New Clients</small>
+                        <div class="progress progress-xs mt-3 mb-0 bg-flat-color-2" style="width: 40%; height: 5px;"></div>
+                    </div>
+                </div>
+                <div class="card col-md-6 no-padding ">
+                    <div class="card-body">
+                        <div class="h1 text-muted text-right mb-4">
+                            <i class="fa fa-cart-plus"></i>
+                        </div>
+                        <div class="h4 mb-0">
+                            <span>{{("00000"+main.ProductSoldCount).slice(-3)}}</span>
+                        </div>
+                        <small class="text-muted text-uppercase font-weight-bold">Products sold</small>
+                        <div class="progress progress-xs mt-3 mb-0 bg-flat-color-3" style="width: 40%; height: 5px;"></div>
+                    </div>
+                </div>
+                <div class="card col-md-6 no-padding ">
+                    <div class="card-body">
+                        <div class="h1 text-muted text-right mb-4">
+                            <i class="fa fa-inr"></i>
+                        </div>
+                        <div class="h4 mb-0">
+                            <span>{{main.PaymentDues | INR}}</span>
+                        </div>
+                        <small class="text-muted text-uppercase font-weight-bold">Payment Dues</small>
+                        <div class="progress progress-xs mt-3 mb-0 bg-flat-color-4" style="width: 40%; height: 5px;"></div>
+                    </div>
+                </div>
+                <div class="card col-md-6 no-padding ">
+                    <div class="card-body">
+                        <div class="h1 text-muted text-right mb-4">
+                            <i class="ti-headphone-alt"></i>
+                        </div>
+                        <div class="h4 mb-0">
+                            <span>{{("00000"+main.CallLogCount).slice(-3)}}</span>
+                        </div>
+                        <small class="text-muted text-uppercase font-weight-bold">Call Logs</small>
+                        <div class="progress progress-xs mt-3 mb-0 bg-flat-color-5" style="width: 40%; height: 5px;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="content mt-3">
+            <div class="animated fadeIn">
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card text-white bg-flat-color-1">
+                            <div class="card-body pb-0">
+                                <h4 class="mb-0">
+                                    <span>Order</span>
+                                </h4>
+
+                                <div class="chart-wrapper px-0" style="height:70px;" height="70" />
+                                <canvas id="widgetChart1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.col-->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card text-white bg-flat-color-2">
+                        <div class="card-body pb-0">
+                            <h4 class="mb-0">
+                                <span>Dispatch</span>
+                            </h4>
+
+                            <div class="chart-wrapper px-0" style="height:70px;" height="70" />
+                            <canvas id="widgetChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/.col-->
+            <div class="col-md-6 col-lg-3">
+                <div class="card text-white bg-flat-color-4">
+                    <div class="card-body pb-0">
+                        <h4 class="mb-0">
+                            <span>Payment Due</span>
+                        </h4>
+
+                    </div>
+                    <div class="chart-wrapper px-0" style="height:70px;" height="70" />
+                    <canvas id="widgetChart3"></canvas>
+                </div>
+            </div>
+        </div>
+        <!--/.col-->
+        <div class="col-md-6 col-lg-3">
+            <div class="card text-white bg-flat-color-3">
+                <div class="card-body pb-0">
+                    <h4 class="mb-0">
+                        <span>Call Logs</span>
+                    </h4>
+
+                    <div class="chart-wrapper px-3" style="height:70px;" height="70" />
+                    <canvas id="widgetChart4"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-desktop text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Device Ready</div>
+                            <div class="stat-text">Pending: {{main.PendingDeviceReadyCount}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-receipt text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Billing</div>
+                            <div class="stat-text">Pending: {{main.PendingBillingCount}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-truck text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Dispatch</div>
+                            <div class="stat-text">Pending: {{main.PendingDispatchCount}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-inr text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Payment</div>
+                            <div class="stat-text">Pending: {{main.PendingPaymentCount}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-inr text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Collection</div>
+                        <div class="stat-digit">{{main.TotalCollection | INR}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="fa fa-inr text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Total Profit</div>
+                        <div class="stat-digit">{{main.TotalProfit | INR}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-view-list-alt text-warning border-warning"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Order Queue</div>
+                        <div class="stat-digit">{{main.OrderQueue}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-user text-primary border-primary"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Users</div>
+                        <div class="stat-digit">{{main.UserCount}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Sufee/assets/js/vendor/jquery-2.1.4.min.js"></script>
+
+    <script src="~/Sufee/assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="~/Sufee/assets/js/widgets.js"></script>
+</div>

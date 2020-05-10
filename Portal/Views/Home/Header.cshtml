@@ -1,0 +1,97 @@
+﻿<!-- Header-->
+<header id="header" class="header" style="visibility:hidden" ng-controller="headerCTRL">
+    <div class="header-menu">
+        <div class="col-sm-7">
+            <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+
+        </div>
+        <div class="col-sm-5">
+            <div class="user-area dropdown float-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="user-avatar rounded-circle" src="~/Sufee/images/admin.jpg" alt="User Avatar">
+                </a>
+                <div class="user-menu dropdown-menu">
+                    <a class="nav-link" href="#">My Profile</a>
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#passwordModal" ng-click="changePassword()">Change Password</a>
+                    <a class="nav-link" href="/Account/SignOff"><i class="fa fa-power-off"></i>&nbsp;&nbsp; Logout</a>
+                </div>
+            </div>
+            <div id="language-select" align="left" style="min-width:200px">
+                <div style="font-size:12px; color:black;" align="right">
+                    {{username}}
+                </div>
+                <div class="dropdown-menu" aria-labelledby="language">
+                    <div class="dropdown-item">
+                        <span class="flag-icon flag-icon-fr"></span>
+                    </div>
+                    <div class="dropdown-item">
+                        <i class="flag-icon flag-icon-es"></i>
+                    </div>
+                    <div class="dropdown-item">
+                        <i class="flag-icon flag-icon-us"></i>
+                    </div>
+                    <div class="dropdown-item">
+                        <i class="flag-icon flag-icon-it"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="passwordModalLabel">User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form name="form" novalidate>
+                    <div class="modal-body">
+                        <div>
+                            <div class="card">
+                                <div class="card-header"><strong>Change Password</strong></div>
+                                <div class="card-body card-block">
+                                    <div class="row">
+                                        <div class="col col-5">
+                                            <div class="form-group">
+                                                <label class=" form-control-label">Old Password<span class="error">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon"><i class="fa fa-user-circle"></i></div>
+                                                    <input type="password" class="form-control" name="oldpassword" maxlength="25" ng-model="oUser.OldPassword" ng-class="{ 'has-error' : form.oldpassword.$invalid && !form.oldpassword.$pristine }" required>
+                                                </div>
+                                                <small ng-show="form.oldpassword.$invalid && !form.oldpassword.$pristine" class="error">Old password is required.</small>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col col-5">
+                                            <div class="form-group">
+                                                <label class=" form-control-label">New Password<span class="error">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                                                    <input type="password" class="form-control" name="newpassword" ng-model="oUser.NewPassword" minlength="4" maxlength="15" ng-class="{ 'has-error' : form.newpassword.$invalid && !form.newpassword.$pristine }" required>
+                                                </div>
+                                                <small ng-show="form.newpassword.$invalid && !form.newpassword.$pristine" class="error">Minimum 4 length of password.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="passwordclose" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" ng-click="updatePassword()" ng-disabled="form.oldpassword.$invalid || form.newpassword.$invalid" class="btn btn-primary" data-dismiss="modal">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header-->
+
+

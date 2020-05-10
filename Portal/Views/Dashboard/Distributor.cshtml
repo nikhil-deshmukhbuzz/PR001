@@ -1,0 +1,122 @@
+﻿<div class="content mt-3" ng-show="isDistributor" style="max-height:500px;overflow-y:auto">
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-shopping-cart-full text-primary border-primary"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Pending Orders</div>
+                        <div class="stat-digit">{{distributor.PendingOrderCount}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-truck text-success border-success"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Dispatch Orders</div>
+                        <div class="stat-digit">{{distributor.DispatchCount}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-alert text-warning border-warning"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Payment Due</div>
+                        <div class="stat-digit">{{distributor.UnpaidInvoiceCount}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-one">
+                    <div class="stat-icon dib"><i class="ti-trash text-danger border-danger"></i></div>
+                    <div class="stat-content dib">
+                        <div class="stat-text">Cancel Orders</div>
+                        <div class="stat-digit">{{distributor.CancelOrderCount}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="fa fa-inr text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Commision</div>
+                            <div class="stat-text">Total: {{distributor.TotalCommision | INR}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-alert text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Commision</div>
+                            <div class="stat-text">Pending: {{distributor.PendingCommision | INR}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-user text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Customer</div>
+                            <div class="stat-text">Total: {{distributor.TotalClient}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="stat-widget-four">
+                    <div class="stat-icon dib">
+                        <i class="ti-headphone-alt text-muted"></i>
+                    </div>
+                    <div class="stat-content">
+                        <div class="text-left dib">
+                            <div class="stat-heading">Customer Support</div>
+                            <div class="stat-text">Total: {{distributor.TotalCustomerSupport}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

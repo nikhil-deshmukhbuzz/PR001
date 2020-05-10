@@ -1,0 +1,41 @@
+﻿
+<div id="template" style="visibility:hidden;" ng-controller="dispatchCTRL" ng-init="masters()">
+    @*<div class="breadcrumbs">
+        <div class="col-sm-4">
+            <div class="page-header float-left">
+                <div class="page-title">
+                    <h1>Dispatch</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="page-header float-right">
+                <div class="page-title">
+                    <ol class="breadcrumb text-right">
+                        <li><a href="#">Stock Register</a></li>
+                        <li class="active">Dispatch</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <div class="col-sm-12" ng-show="success">
+        <div class="alert  alert-success alert-dismissible fade show" role="alert">
+            <span class="badge badge-pill badge-success"><i class="fa fa-info"></i> </span> {{successMsg}}.
+        </div>
+    </div>
+    <div class="col-sm-12" ng-show="error">
+        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+            <span class="badge badge-pill badge-danger"><i class="fa fa-info"></i> </span> {{errorMsg}}.
+        </div>
+    </div>
+    <!-- Add -->
+    @{
+        Html.RenderPartial("~/Views/Dispatch/Add.cshtml");
+    }
+
+    <!-- List -->
+    @{
+        Html.RenderPartial("~/Views/Dispatch/List.cshtml");
+    }
+</div>

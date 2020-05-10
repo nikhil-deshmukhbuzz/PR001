@@ -1,0 +1,95 @@
+﻿<div class="modal fade" id="mediumModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Distributor Bill</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="form" novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="card">
+                            <div class="card-header"><strong>{{header}}</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="distributor" class=" form-control-label">Distributor</label>
+                                            <select id="distributor" name="distributor" data-placeholder="Choose a Distributor..." class="standardSelect form-control" tabindex="1" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Payble Amount</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-inr"></i></div>
+                                                <input class="form-control" name="paybleAmount" only-digits maxlength="10" ng-model="PaybleAmount" ng-disabled="isEditable">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="client" class=" form-control-label">Client</label>
+
+                                            <select id="client" name="client" data-placeholder="Choose a Client..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.client.$error.required}" ng-model="ddl.selectedClient" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="product" class=" form-control-label">Product</label>
+                                            <select id="product" name="product" data-placeholder="Choose a Product..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.product.$error.required}" ng-model="ddl.selectedProduct" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="order" class=" form-control-label">Order</label>
+
+                                            <select id="order" name="order" data-placeholder="Choose a Order..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.order.$error.required}" ng-model="ddl.selectedOrder" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="paymentStatus" class=" form-control-label">Payment Status</label>
+
+                                            <select id="paymentStatus" name="paymentStatus" data-placeholder="Choose a Payment Status..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.paymentStatus.$error.required}" ng-model="ddl.selectedPaymentStatus" ng-required="true" ng-disabled="isEditable && IsPaid"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="paymentMode" class=" form-control-label">Payment Mode</label>
+
+                                            <select id="paymentMode" name="paymentMode" data-placeholder="Choose a Payment Mode..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.paymentMode.$error.required}" ng-model="ddl.selectedPaymentMode" ng-required="true"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Payment Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input type="date" class="form-control" name="date" tabindex="7" ng-model="PaymentDate" ng-disabled="true">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close" type="button" class="btn btn-secondary float-left" data-dismiss="modal" ng-click="reset(form)">Cancel</button>
+                        <button type="submit" ng-click="submit()" class="btn btn-primary" data-dismiss="modal" ng-show="isEditable">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

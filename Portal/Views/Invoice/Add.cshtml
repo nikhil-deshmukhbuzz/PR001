@@ -1,0 +1,131 @@
+﻿<div class="modal fade" id="mediumModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Invoice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="form" novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="card">
+                            <div class="card-header"><strong>{{header}}</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="client" class=" form-control-label">Client<span class="error">*</span></label>
+
+                                            <select id="client" name="client" data-placeholder="Choose a Client..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.client.$error.required}" ng-model="ddl.selectedClient" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="product" class=" form-control-label">Product<span class="error">*</span></label>
+                                            <select id="product" name="product" data-placeholder="Choose a Product..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.product.$error.required}" ng-model="ddl.selectedProduct" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="order" class=" form-control-label">Order<span class="error">*</span></label>
+
+                                            <select id="order" name="order" data-placeholder="Choose a Order..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.order.$error.required}" ng-model="ddl.selectedOrder" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="paymentStatus" class=" form-control-label">Payment Status<span class="error">*</span></label>
+
+                                            <select id="paymentStatus" name="paymentStatus" data-placeholder="Choose a Payment Status..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.paymentStatus.$error.required}" ng-model="ddl.selectedPaymentStatus" ng-required="true" ng-disabled="isEditable && IsPaid"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="paymentMode" class=" form-control-label">Payment Mode</label>
+
+                                            <select id="paymentMode" name="paymentMode" data-placeholder="Choose a Payment Mode..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.paymentMode.$error.required}" ng-model="ddl.selectedPaymentMode" ng-required="true"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Payment Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input type="date" class="form-control" name="date" tabindex="7" ng-model="PaymentDate" ng-disabled="true">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" ng-show="dispatchDetails.length > 0 || billingDetails.length > 0">
+                            <div class="card-header"><strong class="float-right">Invoice Details</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row" ng-repeat="data in dispatchDetails">
+                                    <div class="col col-7">
+                                        <div class="form-group" align="right">
+                                            <label for="client" style="padding-left:50px" class=" form-control-label"><b>{{data.InventoryName}} :</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="form-group">
+                                            <input class="form-control" style="text-align:right" ng-model="data.Amount" ng-change="total()" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col col-1">
+
+                                    </div>
+                                </div>
+
+                                <div class="row" ng-repeat="data in billingDetails">
+                                    <div class="col col-7">
+                                        <div class="form-group" align="right">
+                                            <label for="client" style="padding-left:50px" class=" form-control-label"><i><small>{{data.Header}} :</small></i></label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="form-group">
+                                            <input class="form-control" style="text-align:right" ng-model="data.Amount" ng-change="total()" ng-disabled="!IsDraft || data.IsSoftware" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="col col-1">
+                                        <span style="padding-left:10px;padding-top:5px;" ng-hide="!IsDraft || data.IsSoftware"><i class="fa fa-trash-o pointer" data-toggle="tooltip" data-placement="top" title="Remove" ng-click="removeHeader($index)"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" ng-show="dispatchDetails.length > 0 || billingDetails.length > 0">
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col col-7">
+                                        <div class="form-group" align="right">
+                                            <label for="total" style="padding-left: 100px;" class=" form-control-label"><b>Total Amount</b></label>
+                                        </div>
+                                    </div>
+                                    <div class="col col-4">
+                                        <div class="form-group">
+                                            <input class="form-control" style="text-align:right" ng-model="TotalAmount" readonly>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close" type="button" class="btn btn-secondary float-left" data-dismiss="modal" ng-click="reset(form)">Cancel</button>
+                        <button id="draft" type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="submit(true)" ng-disabled="form.client.$pristine || form.product.$pristine || form.order.$pristine || form.paymentStatus.$pristine" ng-show="!isEditable">Draft</button>
+                        <button type="submit" ng-click="submit(false)"  class="btn btn-success" data-dismiss="modal" ng-show="isEditable">Make Invoice</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+E:\Projects\PR001 Core\PR001.EF\bin\Debug\netcoreapp2.1\PR001.EF.deps.json
+E:\Projects\PR001 Core\PR001.EF\bin\Debug\netcoreapp2.1\PR001.EF.dll
+E:\Projects\PR001 Core\PR001.EF\bin\Debug\netcoreapp2.1\PR001.EF.pdb
+E:\Projects\PR001 Core\PR001.EF\obj\Debug\netcoreapp2.1\PR001.EF.csproj.CoreCompileInputs.cache
+E:\Projects\PR001 Core\PR001.EF\obj\Debug\netcoreapp2.1\PR001.EF.AssemblyInfoInputs.cache
+E:\Projects\PR001 Core\PR001.EF\obj\Debug\netcoreapp2.1\PR001.EF.AssemblyInfo.cs
+E:\Projects\PR001 Core\PR001.EF\obj\Debug\netcoreapp2.1\PR001.EF.dll
+E:\Projects\PR001 Core\PR001.EF\obj\Debug\netcoreapp2.1\PR001.EF.pdb

@@ -1,0 +1,65 @@
+﻿<div class="modal fade" id="mediumModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">City</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="form" novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="card">
+                            <div class="card-header"><strong>{{header}}</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="state" class=" form-control-label">State<span class="error">*</span></label>
+                                            <select id="state" name="state" data-placeholder="Choose a State..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.state.$error.required}" ng-model="ddl.selectedState" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="district" class=" form-control-label">District<span class="error">*</span></label>
+                                            <select id="district" name="district" data-placeholder="Choose a District..." class="standardSelect form-control" tabindex="2" ng-class="{'has-error': form.district.$error.required}" ng-model="ddl.selectedDistrict" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">City Name<span class="error">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-pencil-square"></i></div>
+                                                <input class="form-control" name="cityName" maxlength="20" ng-model="oCity.CityName" ng-class="{ 'has-error' : form.cityName.$invalid && !form.cityName.$pristine }" tabindex="3" autocomplete="off" required>
+                                            </div>
+                                            <small ng-show="form.cityName.$invalid && !form.cityName.$pristine" class="error">City name is required.</small>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Pincode<span class="error">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-pencil-square"></i></div>
+                                                <input class="form-control" name="pincode" only-digits maxlength="20" ng-model="oCity.Picode" ng-class="{ 'has-error' : form.pincode.$invalid && !form.pincode.$pristine }" tabindex="4" autocomplete="off" required>
+                                            </div>
+                                            <small ng-show="form.pincode.$invalid && !form.pincode.$pristine" class="error">Pincode is required.</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="reset(form)">Cancel</button>
+                    <button type="submit" ng-click="submit(form)" ng-disabled="form.cityName.$invalid || form.pincode.$invalid || form.state.$pristine || form.district.$pristine" class="btn btn-primary" data-dismiss="modal">{{submitTxt}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

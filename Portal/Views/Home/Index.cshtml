@@ -1,0 +1,62 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<link href="~/Content/style.css" rel="stylesheet" />
+<style>
+    .buttonload {
+        background-color: #4CAF50; /* Green background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 12px 24px; /* Some padding */
+        font-size: 16px; /* Set a font-size */
+    }
+
+    /* Add a right margin to each icon */
+    .fa {
+        margin-left: -12px;
+        margin-right: 8px;
+    }
+</style>
+
+<div id="login" ng-controller="loginCTRL" style="visibility:hidden">
+    <form name="form" class="login100-form" novalidate>
+        <div class="wrap-input100 validate-input m-b-26">
+            <span class="label-input100">Username</span>
+            <input class="input100" name="username" type="text" placeholder="Enter username" maxlength="50" ng-model="oUser.Username" ng-class="{ 'has-error' : form.username.$invalid && !form.username.$pristine }" autocomplete="off" required>
+            <span class="focus-input100"></span>
+        </div>
+        <small ng-show="form.username.$invalid && !form.username.$pristine" class="error">Username is required.</small>
+
+        <div class="wrap-input100 validate-input m-b-18">
+            <span class="label-input100">Password</span>
+            <input class="input100" type="password" name="pass" placeholder="Enter password" maxlength="50" ng-model="oUser.Password" ng-class="{ 'has-error' : form.pass.$invalid && !form.pass.$pristine }" autocomplete="off" required>
+            <span class="focus-input100"></span>
+        </div>
+        <small ng-show="form.pass.$invalid && !form.pass.$pristine" class="error">Password is required.</small>
+
+        <div class="flex-sb-m w-full p-b-30">
+            <div class="contact100-form-checkbox">
+
+            </div>
+
+
+        </div>
+
+        <div class="container-login100-form-btn" align="center">
+
+            <button type="submit" class="buttonload login100-form-btn buttonload" ng-click="doLogin()" ng-disabled="form.username.$invalid || form.pass.$invalid || isProcessing">
+                <i class="fa fa-spinner fa-spin" ng-show="isProcessing"></i>Login
+            </button>
+            @*<div style="padding-left: 50px;padding-top: 10px;">
+            <a href="#" class="txt1">
+                Forgot Password?
+            </a>
+        </div>*@
+        </div>
+        <div align="center" style="padding-top:10px;padding-left:35px">
+            <small ng-show="error" class="error">{{errorMsg}}.</small>
+        </div>
+    </form>
+</div>

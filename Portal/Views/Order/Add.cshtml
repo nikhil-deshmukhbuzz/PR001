@@ -1,0 +1,101 @@
+﻿<div class="modal fade" id="mediumModal" tabindex="-1" aria-labelledby="staticModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mediumModalLabel">Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="reset(form)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form name="form" novalidate>
+                <div class="modal-body">
+                    <div>
+                        <div class="card">
+                            <div class="card-header"><strong>{{header}}</strong></div>
+                            <div class="card-body card-block">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="client" class=" form-control-label">Client<span class="error">*</span></label>
+
+                                            <select id="client" name="client" data-placeholder="Choose a Client..." class="standardSelect form-control" tabindex="1" ng-class="{'has-error': form.client.$error.required}" ng-model="ddl.selectedClient" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="product" class=" form-control-label">Product<span class="error">*</span></label>
+                                            <select id="product" name="product" data-placeholder="Choose a Product..." class="standardSelect form-control" tabindex="2" ng-class="{'has-error': form.product.$error.required}" ng-model="ddl.selectedProduct" ng-required="true" ng-disabled="isEditable"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label for="clientType" class=" form-control-label">Client Type<span class="error">*</span></label>
+                                                <select id="clientType" name="clientType" data-placeholder="Choose a Client Type..." class="standardSelect form-control" tabindex="3" ng-class="{'has-error': form.clientType.$error.required}" ng-model="ddl.selectedClientType" ng-required="true"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Hardware Quantity<span class="error">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-shopping-cart"></i></div>
+                                                <input class="form-control" name="hardwareQuantity" only-digits maxlength="2" tabindex="4" ng-model="oOrder.HardwareQauntity" ng-class="{ 'has-error' : form.hardwareQuantity.$invalid && !form.hardwareQuantity.$pristine }" required autocomplete="nope">
+                                            </div>
+                                            <small ng-show="form.hardwareQuantity.$invalid && !form.hardwareQuantity.$pristine" class="error">Hardware Quantity is required.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">DeadLine Date</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                                <input type="date" class="form-control" name="date" tabindex="5" ng-model="DeadlineDate"  autocomplete="nope">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label class=" form-control-label">Comment</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><i class="fa fa-comment-o"></i></div>
+                                                <textarea class="form-control" name="address" maxlength="250" ng-model="Comment" tabindex="6" autocomplete="nope"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row" ng-show="isEditable && isCancel">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label for="status" class=" form-control-label">Status</label>
+                                                <select id="status" name="status" data-placeholder="Choose a Status..." class="standardSelect form-control" tabindex="7" ng-class="{'has-error': form.status.$error.required}" ng-model="ddl.selectedStatus" ng-required="true"></select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" ng-click="reset(form)">Cancel</button>
+                    <button id="delete" type="button" class="btn btn-danger" data-dismiss="modal" ng-click="delete(form)" ng-show="isDelete">Delete</button>
+                    <button type="submit" ng-click="submit(form)" ng-disabled="form.client.$pristine || form.product.$pristine || form.clientType.$pristine || form.hardwareQuantity.$invalid" class="btn btn-primary" data-dismiss="modal">{{submitTxt}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
